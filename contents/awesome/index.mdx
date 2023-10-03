@@ -1,18 +1,25 @@
-# AWESOME
-
-## DEMO Page
-
-https://theme-awesome.vercel.app/
-
-## Download
-
-You can download latest version from here
-https://storage.googleapis.com/theme-awesome/awesome.zip
+---
+title: Awesome - Next.js Blog Theme
+date: 2021-09-18
+writtenBy: steelydylan
+category: about
+tags: []
+related: []
+thumbnail: /images/awesome.jpg
+---
 
 ## Motivation
 
 I just want to create/update markdown files to deploy sites using Git.
 This blog can run without any SaaS service such as contentful or Strapi
+
+## Features
+
+- High Performance
+- Fully Customizable
+- Run with static mdx files
+- Modern Architecture Using TypeScript and React hooks
+- Using Next.js SSG to generate static files
 
 ## Requirements
 
@@ -130,6 +137,20 @@ export default {
       github: "https://github.com/steelydylan",
     },
   },
+  writers: [
+    {
+      id: "awesome",
+      name: "Mr. AWESOME",
+      description: "profile here profile here profile here profile here",
+      image: "/images/me.png",
+    },
+    {
+      id: "steelydylan",
+      name: "steelydylan",
+      description: "profile here profile here profile here profile here",
+      image: "/images/me.png",
+    },
+  ],
   hero: {
     title: "My awesome life",
     image: "/images/plane.jpeg",
@@ -233,6 +254,7 @@ category: themes
 tags: ["about"]
 related: []
 thumbnail: /images/awesome.png
+description: about this article...
 ---
 ```
 
@@ -244,66 +266,8 @@ thumbnail: /images/awesome.png
 - `thumbnail` the thumbnail image of the article
 - `description` the description of this article
 
+### Give me star on GitHub
 
-## Use Notion API Instead of mdx files
+If you like this project, please give me star on github
 
-### **Create a database in Notion**.
-
-First, let's create a database in Notion. Type `/table` to create a table block, which will be the database.
-
-Prepare the following properties for the table
-
-- `Page` Title of the portfolio
-- `Slug` Used as the URL to display the portfolio
-- `Published` Whether to display the portfolio or not
-- `Date` The date of the portfolio
-- `Authors` The author of this article
-- `Thumbnail` Thumbnail of the article
-- `Description` Brief description of the portfolio
-- `Category` category of the article
-
-This sample page will help
-
-https://mint-hardware-b22.notion.site/7e9876bd5ca14342aff2608403804a8a?v=25494ae1a48846e7bf6fe31fb699e185
-
-### **Get Secret Key and Database ID in Notion**.
-
-Next, We will obtain the Secret Key and Database ID from Notion.
-
-First, obtain the Secret Key.
-
-To obtain the Secret Key, go to the Notion page, Settings & Members, Integrations, Develop your own integrations, and create a new Integration.
-
-Next, invite the integration you just created to the table you just created.
-
-Click the Share button in the upper right corner of the Notion, and invite the integration you created from Invite in the popover that appears.
-
-Next, obtain the database ID.
-
-The table page has the following URL
-
-```html
-https://www.notion.so/*****************?v=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-````
-
-The ``****************`` part is the database ID, so write it down.
-
-Enter the information you have noted in the .env file
-
-```html
-NOTION_DATABASE_ID= 
-NOTION_TOKEN=
-```
-
-### Update Blog Config
-
-In, `blog.config.ts`, just set `notion` to `use` property
-
-```json
-  use: "notion", // mdx or notion
-```
-
-
-## License
-
-MIT License
+<iframe src="https://ghbtns.com/github-btn.html?user=steelydylan&repo=Awesome&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
