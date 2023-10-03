@@ -1,113 +1,110 @@
-![Next.js blogging template for Netlify](https://repository-images.githubusercontent.com/284910441/d8efc300-e2ae-11ea-9596-b01e3844e39d)
+# Gatsby Starter Ghost
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c6f44d34-0570-4ca0-9d3d-cabdaa2b3afb/deploy-status)](https://app.netlify.com/sites/nextjs-netlify-blog-template/deploys)
-[![MADE BY Next.js](https://img.shields.io/badge/MADE%20BY%20Next.js-000000.svg?style=flat&logo=Next.js&labelColor=000)](https://nextjs.org/)
+A starter template to build lightning fast websites with [Ghost](https://ghost.org/) & [Gatsby](https://gatsbyjs.org)
 
-Next.js blogging template for Netlify is a boilerplate for building blogs with only Netlify stacks.
+**Demo:** https://gatsby.ghost.org/
 
-There are some boilerplate or tutorials for the combination of Next.js and Netlify on GitHub. These resources have documentation and good tutorial to get started Next.js and Netlify quickly, but they are too simple to build blogs with standard features like tagging.
+&nbsp;
 
-Next.js blogging template for Netlify has already implemented these standard features for building blogs with only using Next.js and Netlify stacks.
+![gatsby-starter-ghost](https://user-images.githubusercontent.com/120485/50913567-8ab8e380-142c-11e9-9e78-de02ded12fc6.jpg)
 
-## Demo
+&nbsp;
 
-Deploy on your environment by clicking here:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/wutali/nextjs-netlify-blog-template&stack=cms)
+# Installing
 
-Or access the following demo site:
-
-[Next.js blog template for Netlify](https://nextjs-netlify-blog-template.netlify.app/)
-
-## Features
-
-- **Tagging**: organizes content by tags
-- **Author**: displays author names who write a post
-- **Pagination**: limits the number of posts per page
-- **CMS**: built with CMS to allow editors modifying content with the quickest way
-- **SEO optimized**: built-in metadata like JSON-LD
-- **Shortcode**: extends content writing with React component like WordPress shortcodes
-
-## Dependencies
-
-- [TypeScript](https://www.typescriptlang.org/)
-- [Next.js](https://nextjs.org/)
-- [Netlify](https://www.netlify.com/)
-- [MDX](https://mdxjs.com/)
-
-## Getting started
-
-To create your blog using the template, open your terminal, `cd` into the directory you'd like to create the app in,
-and run the following command:
-
-```
-npx create-next-app your-blog --example "https://github.com/wutali/nextjs-netlify-blog-template"
+```bash
+# With Gatsby CLI
+gatsby new gatsby-starter-ghost https://github.com/TryGhost/gatsby-starter-ghost.git
 ```
 
-After that, set up your project as following the Netlify blog:
-
-[A Step-by-Step Guide: Deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
-
-## Customization
-
-This template is just a template and a boilerplate in which users can customize anything after the project was cloned and started.
-The following instructions introduce common customization points like adding new metadata or applying a new design theme.
-
-### Styling pages by a customized theme
-
-All source codes related to the blog are under [components](/src/components) and [pages](/src/pages) directory.
-You can modify it freely if you want to apply your design theme.
-All components use [styled-jsx](https://github.com/vercel/styled-jsx) and [css-modules](https://github.com/css-modules/css-modules) to define their styles, but you can choose any styling libraries for designing your theme.
-
-The directory tree containing the blog source code are described below:
-
-```
-meta: yaml files defining metadata like authors or tags
-public: images, favicons and other static assets
-src
-├── assets: other assets using inside of components
-├── components: pieces of components consisting of pages
-├── content: mdx files for each post page
-├── lib: project libraries like data fetching or pagination
-└── pages: page components managing by Next.js
+```bash
+# From Source
+git clone https://github.com/TryGhost/gatsby-starter-ghost.git
+cd gatsby-starter-ghost
 ```
 
-### Organizing content by categories
+Then install dependencies
 
-The category metadata that associates with content have the same relationship with the authors' one.
-Then reference these implementations for adding new metadata:
+```bash
+yarn
+```
 
-- [public/admin/config.yml](/public/admin/config.yml#L51): author metadata definition for Netlify CMS
-- [src/lib/authors.tsx](/src/lib/authors.ts): fetches metadata and defines utility functions for components
-- [meta/authors.yml](/src/meta/authors.yml): author content managed by Netlify CMS
-- [src/components/PostLayout.tsx](/src/components/PostLayout.tsx): displays author content for each page
+&nbsp;
 
-You understood they have four steps to add the category metadata on your project after you read the above source codes:
+# Running
 
-1. Define the category metadata on the above Netlify config file
-2. Create an empty file named with `categories.yml` under [meta](/src/meta/) directory
-3. Create a new module for fetching category metadata
-4. Display the category metadata on [src/components/PostLayout.tsx](/src/components/PostLayout.tsx#L75) or other components you want
+Start the development server. You now have a Gatsby site pulling content from headless Ghost.
 
-It is all you have to do. After that, you can access Netlify CMS and create new categories at any time.
+```bash
+gatsby develop
+```
 
-### Locale settings for Netlify CMS
+By default, the starter will populate content from a default Ghost install located at https://gatsby.ghost.io.
 
-Modify [config.yml](/public/admin/config.yml) and
-[index.html](/public/admin/index.html) under [public/admin](/public/admin/) directory
-as following instructions:
+To use your own install, you will need to edit the `.ghost.json` config file with your credentials. Change the `apiUrl` value to the URL of your Ghost site. For Ghost(Pro) customers, this is the Ghost URL ending in `.ghost.io`, and for people using the self-hosted version of Ghost, it's the same URL used to access your site.
 
-[Netlify CMS - Configuration Options #Locale](https://www.netlifycms.org/docs/configuration-options/#locale)
+Next, update the `contentApiKey` value to a key associated with the Ghost site. A key can be provided by creating an integration within Ghost Admin. Navigate to Integrations and click "Add new integration". Name the integration appropriately and click create.
 
-## References
+Finally, configure your desired URL in `siteConfig.js`, so links (e. g. canonical links) are generated correctly. You can also update other default values, such as `postsPerPage` in this file.
 
-- [Netlify CMS Documentation](https://www.netlifycms.org/docs/intro/)
-- [Building a Markdown blog with Next 9.4 and Netlify](https://www.netlify.com/blog/2020/05/04/building-a-markdown-blog-with-next-9.4-and-netlify/)
-- [Hugo Theme - Codex](https://github.com/jakewies/hugo-theme-codex)
-- [Next.js Starter Template for TypeScript](https://github.com/vercel/next-learn-starter/tree/master/typescript-final)
-- [Building Blog with NextJS and Netlify CMS](https://dev.to/mefaba/building-blog-with-nextjs-and-netlify-cms-fom)
-- [Unicons](https://github.com/Iconscout/unicons)
+To use this starter without issues, your Ghost installation needs to be at least on version `2.10.0`.
 
-## License
+The default Ghost version that is used for this starter is `5.x`. If your Ghost installation is on a lower version, you will need to pass in a `version` property in your `.ghost.json` settings:
 
-MIT
+**Ghost >=2.10.0 <5.0.0**
+```json
+{
+    "apiUrl": "https://gatsby.ghost.io",
+    "contentApiKey": "9cc5c67c358edfdd81455149d0",
+    "version": "v4.0"
+}
+```
+
+**Ghost >=5.0.0**
+```json
+{
+    "apiUrl": "https://gatsby.ghost.io",
+    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+}
+```
+
+&nbsp;
+
+# Deploying with Netlify
+
+The starter contains three config files specifically for deploying with Netlify. A `netlify.toml` file for build settings, a `/static/_headers` file with default security headers set for all routes, and `/static/_redirects` to set Netlify custom domain redirects.
+
+To deploy to your Netlify account, hit the button below.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/TryGhost/gatsby-starter-ghost)
+
+Content API Keys are generally not considered to be sensitive information, they exist so that they can be changed in the event of abuse; so most people commit it directly to their `.ghost.json` config file. If you prefer to keep this information out of your repository you can remove this config and set [Netlify ENV variables](https://www.netlify.com/docs/continuous-deployment/#build-environment-variables) for production builds instead.
+
+Once deployed, you can set up a [Ghost + Netlify Integration](https://ghost.org/integrations/netlify/) to use deploy hooks from Ghost to trigger Netlify rebuilds. That way, any time data changes in Ghost, your site will rebuild on Netlify.
+
+&nbsp;
+
+# Optimising
+
+You can disable the default Ghost Handlebars Theme front-end by enabling the `Make this site private` flag within your Ghost settings. This enables password protection in front of the Ghost install and sets `<meta name="robots" content="noindex" />` so your Gatsby front-end becomes the source of truth for SEO.
+
+&nbsp;
+
+# Extra options
+
+```bash
+# Run a production build, locally
+gatsby build
+
+# Serve a production build, locally
+gatsby serve
+```
+
+Gatsby `develop` uses the `development` config in `.ghost.json` - while Gatsby `build` uses the `production` config.
+
+&nbsp;
+
+# Copyright & License
+
+Copyright (c) 2013-2023 Ghost Foundation - Released under the [MIT license](LICENSE).
